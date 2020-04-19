@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Sound/hit.wav" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Art/beach_ball.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Ball.gd" type="Script" id=3]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[node name="Ball" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 14
+physics_material_override = SubResource( 1 )
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BallSprite" type="Sprite" parent="."]
+position = Vector2( 3.05176e-05, 1.90735e-06 )
+texture = ExtResource( 2 )
+
+[node name="BallCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="BallVisibility" type="VisibilityNotifier2D" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = -2.0
